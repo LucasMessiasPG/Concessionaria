@@ -2,11 +2,11 @@
 
 class View {
 
-	public function render($uri, array $parametros)
+	public function render($uri, $parametros = '')
 	{
-		foreach ($parametros as $key => $value) {
-			$$key = $value;
-		}
+        if(is_array($parametros) && count($parametros)>0)
+            foreach ($parametros as $key => $value)
+                $$key = $value;
 
 		require VIEW . '/' . $uri . '.php';
 	}
