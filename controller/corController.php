@@ -1,14 +1,14 @@
 <?php
 
-class marcaController extends Controller {
+class corController extends Controller {
     
-    private $marca; 
+    private $cor; 
     
     public function __construct()
     {
         parent::__construct();
         
-        $this->marca = $this->model('marca');
+        $this->cor = $this->model('cor');
     }
     
     public function cadastrarAction()
@@ -16,12 +16,12 @@ class marcaController extends Controller {
         
     }
     
-    public function alterarAction($id_marca)
+    public function alterarAction($id_cor)
     {
         
     }
     
-    public function excluirAction($id_marca)
+    public function excluirAction($id_cor)
     {
         
     }
