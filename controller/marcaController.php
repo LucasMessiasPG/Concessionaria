@@ -26,4 +26,4 @@ class marcaController extends Controller {
         
     }
     
-}
+} 
