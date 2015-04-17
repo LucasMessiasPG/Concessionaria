@@ -10,8 +10,17 @@ define('VIEW', 'view');
 define('MODEL', 'model');
 
 //DEFINICOES PARA O BANCO DE DADOS
-define('DRIVER', 'mysql');
-define('HOST', 'localhost');
-define('USER', 'root');
-define('PASSWORD', 'root');
-define('DBNAME', 'veiculos');
+
+if (pg_connect("host=localhost user=postgres password=postgres dbname=veiculos")) {
+	define('DRIVER', 'postgres');
+	define('HOST', 'localhost');
+	define('USER', 'postgres');
+	define('PASSWORD', 'postgres');
+	define('DBNAME', 'veiculos');
+}else{
+	define('DRIVER', 'mysql');
+	define('HOST', 'localhost');
+	define('USER', 'root');
+	define('PASSWORD', 'root');
+	define('DBNAME', 'veiculos');
+}
