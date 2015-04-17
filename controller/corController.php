@@ -11,9 +11,22 @@ class corController extends Controller {
         $this->cor = $this->model('cor');
     }
     
+    public function indexAction()
+    {
+        $this->view->render('cor/listar');
+    }
+    
     public function cadastrarAction()
     {
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $cor = new StdClass();
+
+            $cor->nome = $_POST['nome'];
+
+            $this->cor->cadastrar($cor);
+        }
         
+        $this->view->render('cor/cadastrar');
     }
     
     public function alterarAction($id_cor)
