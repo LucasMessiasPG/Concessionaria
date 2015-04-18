@@ -18,7 +18,7 @@ class corController extends Controller {
     
     public function cadastrarAction()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){echo 1;
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $cor = new StdClass();
 
             $cor->nome = $_POST['nome'];
