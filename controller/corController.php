@@ -3,7 +3,7 @@
 class corController extends Controller {
     
     private $cor; 
-    
+
     public function __construct()
     {
         parent::__construct();
