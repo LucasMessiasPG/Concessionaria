@@ -9,9 +9,11 @@ define('VIEW', 'view');
 //CONSTANTE DE VIEW PARA O SISTEMA
 define('MODEL', 'model');
 
+define('URLBASE', 'http://localhost/concessionaria');
+
 //DEFINICOES PARA O BANCO DE DADOS
 
-if (pg_connect("host=localhost user=postgres password=postgres dbname=veiculos")) {
+if (pg_connect("host=localhost user=postgres password=postgres dbname=concessionaria")) {
 	define('DRIVER', 'postgres');
 	define('HOST', 'localhost');
 	define('USER', 'postgres');
