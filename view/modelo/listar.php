@@ -6,4 +6,4 @@ for($i=0;$i<count($parametros);$i++){
     <p><?php echo $$i->id_modelo." - ". $marca->nome." ".$$i->nome?></p>
 <?php
  }
-    //$this->view->render('footer') ?>
+$this->render('footer') ?>

@@ -1,5 +1,5 @@
 <?php $this->render('header')?>
-<h3>Cadastrar</h3>
+<h3>Cadastrar - Modelo</h3>
 <form action="" method="post">
     <label>Marca:</label>
     <select name=    "marca">
@@ -18,4 +18,4 @@
 </form>
 <a href="http://localhost/concessionaria/?url=marca/cadastrar">Cadastrar Marca</a>
 
-<?php //$this->view->render('footer') ?>
+<?php $this->render('footer') ?>

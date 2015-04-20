@@ -12,8 +12,12 @@ class marcaController extends Controller {
     }
     
     public function indexAction(){
+        $this->view->render("marca/index");
+    }
+    
+    public function listarAction(){
         $lista = $this->marca->listar("marca");
-        $this->view->render("marca/listar", $lista);
+        $this->view->render('marca/listar', $lista);
     }
 
     public function cadastrarAction()
@@ -40,9 +44,9 @@ class marcaController extends Controller {
             $this->marca->alterar($marca);
         }
         
-        print_r($this->marca->listar());
+        $lista = $this->marca->listar("marca");
         
-        $this->view->render('marca/alterar');
+        $this->view->render('marca/alterar', $lista);
     }
     
     public function excluirAction($id_marca)

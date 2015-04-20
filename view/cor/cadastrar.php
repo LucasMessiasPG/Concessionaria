@@ -7,4 +7,4 @@
     <input type="submit" />
 </form>
     
-<?php //$this->view->render('footer') ?>
+<?php $this->render('footer') ?>

@@ -36,6 +36,7 @@ abstract class Model {
         $this->executar($sql);
 
         return $this->getRows();
+       
     }
 
 }

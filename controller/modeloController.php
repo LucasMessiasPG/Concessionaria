@@ -12,6 +12,10 @@ class modeloController extends Controller {
     }
     
     public function indexAction(){
+        $this->view->render("modelo/index");
+    }
+    
+    public function listarAction(){
         $lista = $this->modelo->listar("modelo");
         $this->view->render('modelo/listar', $lista);
     }

@@ -1,12 +1,17 @@
 <?php $this->render('header') ?>
+<h3>Alterar</h3>
 <form action="" method="POST">
-    <select>
+    <select name="marca">
         <option value="">Selecione</option>
         <?php
-        for ($i = 0; $i < count($this->marca->id_marca); $i++) {
-            echo "<option value='$this->marca->id_marca'".$this->marca->nome."</option>";
-        }?>
+        for ($i = 0; $i < count($parametros); $i++) {
+        ?>
+            <option value="<?php echo $$i->id_marca ;?>"><?php echo $$i->nome ;?></option>"
+        <?php
+        }
+        ?>
     </select>
     <input type="text" name="nome">
     <input type="submit">
 </form>
+<?php $this->render('footer') ?>
