@@ -10,7 +10,7 @@ class corController extends Controller {
         
         $this->cor = $this->model('cor');
     }
-    
+
     public function indexAction(){
         $this->view->render("cor/index");
     }
