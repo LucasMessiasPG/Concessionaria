@@ -38,5 +38,12 @@ abstract class Model {
         return $this->getRows();
        
     }
+    
+    public function alterar($arg){
+        $sql = "UPDATE marca SET nome='$arg->nome' WHERE id_marca=$arg->id_marca";
+        
+        $this->executar($sql);
+        
+    }
 
 }

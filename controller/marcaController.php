@@ -40,8 +40,10 @@ class marcaController extends Controller {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             $marca->nome = $_POST['nome'];
+            $marca->id_marca = $_POST['marca'];
             
             $this->marca->alterar($marca);
+            
         }
         
         $lista = $this->marca->listar("marca");
