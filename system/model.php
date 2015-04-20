@@ -30,4 +30,12 @@ abstract class Model {
 		return $this->driver->getRows();
 	}
 
+    public function listar($tabela){
+        $sql = "SELECT * FROM $tabela";
+
+        $this->executar($sql);
+
+        return $this->getRows();
+    }
+
 }

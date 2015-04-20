@@ -8,4 +8,5 @@ class Cor extends Model {
         
         $this->executar($sql); 
     }
+
 }

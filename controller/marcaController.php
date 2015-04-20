@@ -11,6 +11,11 @@ class marcaController extends Controller {
         $this->marca = $this->model('marca');
     }
     
+    public function indexAction(){
+        $lista = $this->marca->listar("marca");
+        $this->view->render("marca/listar", $lista);
+    }
+
     public function cadastrarAction()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -35,7 +40,7 @@ class marcaController extends Controller {
             $this->marca->alterar($marca);
         }
         
-        print_r($this->marca->getMarca());
+        print_r($this->marca->listar());
         
         $this->view->render('marca/alterar');
     }
@@ -45,4 +50,4 @@ class marcaController extends Controller {
         
     }
     
-} 
+}

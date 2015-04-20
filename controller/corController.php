@@ -13,7 +13,8 @@ class corController extends Controller {
     
     public function indexAction()
     {
-        $this->view->render('cor/listar');
+        $lista = $this->cor->listar("cor");
+        $this->view->render('cor/listar', $lista);
     }
     
     public function cadastrarAction()
@@ -38,5 +39,6 @@ class corController extends Controller {
     {
         
     }
+
     
 }
