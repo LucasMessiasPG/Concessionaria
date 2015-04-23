@@ -37,17 +37,11 @@ class veiculoController extends Controller {
             
             $this->set_userdata('mensagem', 'Veículo cadastrado.');
         }
-        
-        $anos = array();
-        
-        for ($i = 1960; $i <= (date('Y')+1); $i++) {
-            $anos[] = $i;
-        }
-        
+
         $view = array(
             'modelos' => $this->modelo->listar(),
             'cores' => $this->cor->listar(),
-            'anos' => $anos
+            'anos' => $this->anos()
         );
         
         $this->view->render('veiculo/cadastrar', $view);
@@ -78,9 +72,17 @@ class veiculoController extends Controller {
             
             $this->set_userdata('mensagem', 'Veículo alterado.');
         }
+
+        $view = array(
+            'modelos' => $this->modelo->listar(),
+            'cores' => $this->cor->listar(),
+            'anos' => $this->anos()
+        );
+
+        $this->view->render('veiculo/alterar', $view);
     }
     
-    public function excluirAction($id_veiculo)
+    public function excluirAction($id_veiculo = '')
     {
         if($this->veiculo->excluir($id_veiculo)){
             $this->set_userdata('mensagem', 'Veículo excluido.');
@@ -93,4 +95,15 @@ class veiculoController extends Controller {
         }
     }
     
+    protected function anos()
+    {
+        $anos = array();
+
+        for ($i = 1960; $i <= (date('Y')+1); $i++) {
+            $anos[] = $i;
+        }
+
+        return $anos;
+    }
+
 }
