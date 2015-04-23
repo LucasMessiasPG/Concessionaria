@@ -56,7 +56,7 @@ class veiculoController extends Controller {
         $this->view->render('veiculo/listar', $view);
     }
     
-    public function alterarAction()
+    public function alterarAction($id_veiculo = '')
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $marca = new StdClass();
@@ -73,10 +73,16 @@ class veiculoController extends Controller {
             $this->set_userdata('mensagem', 'Veículo alterado.');
         }
 
+        if(!($id_veiculo > 0))
+            $this->redirect('veiculo/listar');
+
+        $modelo = $this->modelo->get();
+
         $view = array(
             'modelos' => $this->modelo->listar(),
             'cores' => $this->cor->listar(),
-            'anos' => $this->anos()
+            'anos' => $this->anos(),
+            'modelo' => $modelo
         );
 
         $this->view->render('veiculo/alterar', $view);

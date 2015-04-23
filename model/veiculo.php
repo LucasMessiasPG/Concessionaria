@@ -17,6 +17,21 @@ class Veiculo extends Model {
 	}
 
     /**
+    * busca somente um veículo
+    * @return Boolean
+    */
+
+    public function get($id_veiculo)
+    {
+        $sql = "SELECT * FROM veiculo WHERE id_veiculo = $id_veiculo LIMIT 1";
+
+        if($this->executar($sql))
+            return $this->getRow();
+
+        return false;
+    }
+
+    /**
     * Altera um veículo
     * @return Boolean
     */
