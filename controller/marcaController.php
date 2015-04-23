@@ -37,7 +37,7 @@ class marcaController extends Controller {
         $this->view->render('marca/cadastrar');
     }
     
-    public function alterarAction()
+    public function alterarAction($id_marca)
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $marca = new StdClass();
@@ -45,10 +45,20 @@ class marcaController extends Controller {
             $marca->nome = $_POST['nome'];
             $marca->id_marca = $_POST['id_marca'];
 
-            $this->cor->alterar($marca);
+            $this->marca->alterar($marca);
             
             $this->set_userdata('mensagem', 'Marca alterada.');
         }
+
+        $marca = $this->marca->get($id_marca);
+
+        $view = array (
+            'marca' => $marca
+        );
+
+
+
+        $this->view->render('marca/alterar', $view);
     }
     
     public function excluirAction($id_marca)

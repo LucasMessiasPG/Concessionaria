@@ -11,6 +11,15 @@ class Marca extends Model{
         return $this->getRows();
     }
 
+    public function get($id_marca)
+    {
+        $sql = "SELECT nome FROM marca WHERE id_marca=$id_marca LIMIT 1";
+
+        $this->executar($sql);
+
+        return $this->getRow();
+    }
+
     public function cadastrar($marca){
         $sql = "INSERT INTO marca (nome) VALUES ('{$marca->nome}')";
         

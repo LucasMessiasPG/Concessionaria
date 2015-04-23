@@ -9,12 +9,24 @@ class corController extends Controller {
         parent::__construct();
         
         $this->cor = $this->model('cor');
+
     }
+
+    /**
+    * Cria a pagina incial na categoria COR
+    * @retun View index
+    */
 
     public function indexAction(){
         $this->view->render("cor/index");
     }
     
+
+    /**
+    * cria um lista com todas as cores cadastrada e cria a pagina com a mesma
+    * @retun View listar
+    */
+
     public function listarAction(){
         $view = array(
             'cores' => $this->cor->listar("cor")
@@ -23,6 +35,11 @@ class corController extends Controller {
         $this->view->render('cor/listar', $view);
     }
     
+    /**
+    * cria a tela para cadastro e recebe os dados do formulario em seguida cadastra os mesmo
+    * @retun View listar
+    */
+
     public function cadastrarAction()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
