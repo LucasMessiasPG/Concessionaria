@@ -18,9 +18,9 @@ class Cor extends Model {
         $this->executar($sql); 
     }
     
-    public function alterar($id, $cor)
+    public function alterar($cor)
     {
-        $sql = "UPDATE cor SET nome = {$cor->nome} WHERE id=$id";
+        $sql = "UPDATE cor SET nome = {$cor->nome} WHERE id={$cor->id_cor}";
         
         $this->executar($sql); 
     }

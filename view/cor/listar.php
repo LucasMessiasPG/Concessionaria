@@ -17,8 +17,8 @@
     <h3>Nenhuma cor dadastrada</h3>
     <?php endif; ?>
     <div class="text-center">
-        <a href="<?php echo URL?>?url=cor/cadastrar" class="btn btn-default">Cadastrar</a>
-        <a href="<?php echo URL?>" class="btn btn-default">Inicio</a>
+        <a href="<?php echo URL?>cor/cadastrar" class="btn btn-default">Cadastrar</a>
+        <a href="<?php echo URL?>cor" class="btn btn-default">Voltar</a>
     </div>
 </div>
 <?php $this->render('footer') ?>

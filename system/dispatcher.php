@@ -8,7 +8,7 @@ class Dispatcher {
     
 	public function route()
 	{
-		$queryString = isset($_GET['url']) ? $_GET['url'] : 'index/index';
+		$queryString = !empty($_GET['url']) ? $_GET['url'] : 'index/index';
 
 		$queryString = explode('/', $queryString);
 

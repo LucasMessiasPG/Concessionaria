@@ -39,13 +39,27 @@ class veiculoController extends Controller {
     }
     
     public function listarAction(){
-        $lista = $this->veiculo->listar("veiculo");
-        $this->view->render('veiculo/listar', $lista);
+        $view = array(
+            'veiculos' => $this->cor->listar("veiculo")
+        );
+
+        $this->view->render('veiculo/listar', $view);
     }
     
-    public function alterarAction($id_veiculo)
+    public function alterarAction()
     {
-        
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $marca = new StdClass();
+
+            $veiculo->placa = $_POST['placa'];
+            $veiculo->id_modelo = $_POST['modelo'];
+            $veiculo->id_cor = $_POST['cor'];
+            $veiculo->ano_fabricacao = $_POST['ano_fabricacao'];
+            $veiculo->ano_modelo = $_POST['ano_modelo'];
+            $veiculo->preco = $_POST['preco'];
+
+             $this->cor->alterar($modelo);
+        }
     }
     
     public function excluirAction($id_veiculo)

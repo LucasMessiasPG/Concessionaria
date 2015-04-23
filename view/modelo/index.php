@@ -1,8 +1,10 @@
-<?php $this->render('header'); 
-$url = "window.location.href='http://localhost/concessionaria/?url=modelo/";
-?>
-
-<button onclick="<?php echo $url.'cadastrar'?>'">Cadastrar</button>
-<button onclick="<?php echo $url.'alterar'?>'">Alterar</button>
-<button onclick="<?php echo $url.'listar'?>'">Listar</button>
+<?php $this->render('header') ?>
+<div class="container">
+    <h3>Concessionária - Modelos</h3>
+    <div class="text-center">
+        <a href="<?php echo URL.'modelo/cadastrar'?>" class="btn btn-default">Cadastrar</a>
+        <a href="<?php echo URL.'modelo/listar'?>" class="btn btn-default">Listar</a>
+        <a href="<?php echo URL?>" class="btn btn-default">Inicio</a>
+    </div>
+</div>
 <?php $this->render('footer') ?>

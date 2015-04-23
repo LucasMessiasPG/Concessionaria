@@ -15,9 +15,12 @@ class marcaController extends Controller {
         $this->view->render("marca/index");
     }
     
-    public function listarAction(){
-        $lista = $this->marca->listar("marca");
-        $this->view->render('marca/listar', $lista);
+     public function listarAction(){
+        $view = array(
+            'marcas' => $this->marca->listar("marca")
+        );
+
+        $this->view->render('marca/listar', $view);
     }
 
     public function cadastrarAction()
@@ -35,20 +38,14 @@ class marcaController extends Controller {
     
     public function alterarAction()
     {
-        $marca = new StdClass();
-        
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $marca = new StdClass();
+
             $marca->nome = $_POST['nome'];
-            $marca->id_marca = $_POST['marca'];
-            
-            $this->marca->alterar($marca);
-            
+            $marca->id_marca = $_POST['id_marca'];
+
+            $this->cor->alterar($marca);
         }
-        
-        $lista = $this->marca->listar("marca");
-        
-        $this->view->render('marca/alterar', $lista);
     }
     
     public function excluirAction($id_marca)

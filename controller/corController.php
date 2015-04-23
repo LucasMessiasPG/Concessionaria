@@ -36,9 +36,16 @@ class corController extends Controller {
         $this->view->render('cor/cadastrar');
     }
     
-    public function alterarAction($id_cor)
+    public function alterarAction()
     {
-        
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $cor = new StdClass();
+
+            $cor->nome = $_POST['nome'];
+            $cor->id_cor = $_POST['id_cor'];
+
+            $this->cor->alterar($cor);
+        }
     }
     
     public function excluirAction($id_cor)

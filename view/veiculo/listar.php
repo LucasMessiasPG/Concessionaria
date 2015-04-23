@@ -1,25 +1,32 @@
-<?php $this->render('header');
-echo "<table>";
-for($i=0;$i<count($parametros);$i++){
-    $sql = "SELECT id_marca,nome FROM modelo WHERE id_modelo=". $$i->id_modelo;
-    $modelo = pg_fetch_object(pg_query($sql));
-    
-    $sql = "SELECT nome FROM cor WHERE id_cor=". $$i->id_cor;
-    $cor = pg_fetch_object(pg_query($sql));
-
-    $sql = "SELECT nome FROM marca WHERE id_marca=". $modelo->id_marca;
-    $marca = pg_fetch_object(pg_query($sql));
-    
-?>   
-    <tr>
-        <td><p><?php echo $$i->id_veiculo?></p></td>
-        <td><p><?php echo  $marca->nome.' '.$modelo->nome?></p></td>
-        <td><p><?php echo $$i->placa?></p></td>
-        <td><p><?php echo $$i->ano_fabricacao?></p></td>
-        <td><p><?php echo $$i->ano_modelo?></p></td>
-        <td><p><?php echo $$i->preco?></p></td>
-    </tr>
-<?php
- }
-echo "</table>";
-$this->render('footer') ?>
+<?php $this->render('header') ?>
+<div class="container">
+    <?php if(count($veiculos) > 0): ?>
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Placa</th>
+            <th>Ano</th>
+            <th>Modelo</th>
+            <th>Preço</th>
+        </thead>
+        <tbody>
+            <?php foreach ($veiculos as $veiculo): ?>
+            <td><?php echo $veiculo->id_cor ?></td>
+            <td><?php echo $veiculo->nome ?></td>
+            <td><?php echo $veiculo->placa ?></td>
+            <td><?php echo $veiculo->ano ?></td>
+            <td><?php echo $veiculo->modelo ?></td>
+            <td><?php echo $veiculo->preco ?></td>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php else: ?>
+    <h3>Nenhum veiculo dadastrado</h3>
+    <?php endif; ?>
+    <div class="text-center">
+        <a href="<?php echo URL?>?url=veiculo/cadastrar" class="btn btn-default">Cadastrar</a>
+        <a href="<?php echo URL?>" class="btn btn-default">Inicio</a>
+    </div>
+</div>
+<?php $this->render('footer') ?>

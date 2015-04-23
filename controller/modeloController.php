@@ -16,8 +16,11 @@ class modeloController extends Controller {
     }
     
     public function listarAction(){
-        $lista = $this->modelo->listar("modelo");
-        $this->view->render('modelo/listar', $lista);
+        $view = array(
+            'modelos' => $this->modelo->listar()
+        );
+
+        $this->view->render('modelo/listar', $view);
     }
 
     public function cadastrarAction()
@@ -35,6 +38,18 @@ class modeloController extends Controller {
         $lista = $this->modelo->listar("marca");
         $this->view->render('modelo/cadastrar', $lista);
         
+    }
+
+    public function alterarAction()
+    {
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $modelo = new StdClass();
+
+            $modelo->nome = $_POST['nome'];
+            $modelo->id_modelo = $_POST['id_modelo'];
+
+            $this->cor->alterar($modelo);
+        }
     }
 
     
