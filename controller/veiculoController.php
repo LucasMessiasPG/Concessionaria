@@ -82,7 +82,11 @@ class veiculoController extends Controller {
     
     public function excluirAction($id_veiculo)
     {
-        $this->set_userdata('mensagem', 'Veículo excluido.');
+        if($this->veiculo->excluir($id_veiculo)){
+            $this->set_userdata('mensagem', 'Veículo excluido.');
+            
+            $this->redirect('veiculo/listar');
+        }
     }
     
 }

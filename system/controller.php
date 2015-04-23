@@ -34,4 +34,9 @@ abstract class Controller {
     {
         return $_SESSION[$chave] = $data;
     }
+    
+    public function redirect($path = '')
+    {
+        header('Location: ' . URL . $path);
+    }
 }

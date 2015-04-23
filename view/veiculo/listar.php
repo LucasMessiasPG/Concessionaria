@@ -9,6 +9,7 @@
         <th>Ano Fabricação</th>
         <th>Ano Modelo</th>
         <th>Preço</th>
+        <th width="150px">Ações</th>
     </thead>
     <tbody>
         <?php foreach ($veiculos as $veiculo): ?>
@@ -19,6 +20,14 @@
             <td><?php echo $veiculo->ano_fabricacao ?></td>
             <td><?php echo $veiculo->ano_modelo ?></td>
             <td><?php echo $veiculo->preco ?></td>
+            <td>
+                <a href="<?php echo URL ?>veiculo/alterar/<?php echo $veiculo->id_veiculo ?>">
+                    <i class="glyphicon glyphicon-edit"></i> Alterar
+                </a>
+                <a href="<?php echo URL ?>veiculo/excluir/<?php echo $veiculo->id_veiculo ?>">
+                    <i class="glyphicon glyphicon-remove-circle"></i> Excluir
+                </a>
+            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

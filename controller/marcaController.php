@@ -31,10 +31,10 @@ class marcaController extends Controller {
             $marca->nome = $_POST['nome'];
             
             $this->marca->cadastrar($marca);
+            
+            $this->set_userdata('mensagem', 'Marca cadastrada.');
         }
         $this->view->render('marca/cadastrar');
-        
-        $this->set_userdata('mensagem', 'Marca cadastrada.');   
     }
     
     public function alterarAction()

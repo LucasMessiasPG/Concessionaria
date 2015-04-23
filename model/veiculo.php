@@ -44,5 +44,13 @@ class Veiculo extends Model {
 
         return $this->getRows();
     }
+    
+    public function excluir($id_veiculo)
+    {
+        if(is_numeric($id_veiculo))
+            return $this->executar("DELETE FROM veiculo WHERE id_veiculo = $id_veiculo");
+        
+        return false;
+    }
 
 }

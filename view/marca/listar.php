@@ -5,12 +5,21 @@
     <thead>
         <th>ID</th>
         <th>Nome</th>
+        <th width="150px">Ações</th>
     </thead>
     <tbody>
         <?php foreach ($marcas as $marca): ?>
         <tr>
             <td><?php echo $marca->id_marca ?></td>
-            <td><?php echo $marca->nome ?></td>
+            <td><?php echo ucwords($marca->nome) ?></td>
+            <td>
+                <a href="<?php echo URL ?>marca/alterar/<?php echo $marca->id_marca ?>">
+                    <i class="glyphicon glyphicon-edit"></i> Alterar
+                </a>
+                <a href="<?php echo URL ?>marca/excluir/<?php echo $marca->id_marca ?>">
+                    <i class="glyphicon glyphicon-remove-circle"></i> Excluir
+                </a>
+            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>
