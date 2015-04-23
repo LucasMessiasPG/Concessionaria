@@ -33,7 +33,7 @@
     </tbody>
 </table>
 <?php else: ?>
-<h3>Nenhum veiculo dadastrado</h3>
+<h3>Nenhum veículo dadastrado</h3>
 <?php endif; ?>
 <div class="text-center">
     <a href="<?php echo URL?>veiculo/cadastrar" class="btn btn-default">Cadastrar</a>

@@ -2,6 +2,10 @@
 
 class Veiculo extends Model {
 
+    /**
+    * Cadastra um novo veículo
+    * @return Boolean
+    */
 
 	public function cadastrar($veiculo)
 	{
@@ -11,6 +15,11 @@ class Veiculo extends Model {
 
 		return $this->getRow();
 	}
+
+    /**
+    * Altera um veículo
+    * @return Boolean
+    */
 
     public function alterar($veiculo){
         $campos = [];
@@ -27,6 +36,11 @@ class Veiculo extends Model {
         $this->executar($sql);
     }
 
+    /**
+    * Listagem de todos os veiculos cadastrados
+    * @return Array Veiculos
+    */
+
     public function listar(){
         $sql = "SELECT
                 v.id_veiculo,
@@ -38,17 +52,23 @@ class Veiculo extends Model {
                 v.preco
                 FROM veiculo v
                 INNER JOIN modelo m ON v.id_modelo = m.id_modelo
-                INNER JOIN cor c ON v.id_cor = c.id_cor";
+                INNER JOIN cor c ON v.id_cor = c.id_cor
+                ORDER BY modelo";
 
         $this->executar($sql);
 
         return $this->getRows();
     }
     
+    /**
+    * Exclui um veículo
+    * @return Boolean
+    */
+
     public function excluir($id_veiculo)
     {
-        if(is_numeric($id_veiculo))
-            return $this->executar("DELETE FROM veiculo WHERE id_veiculo = $id_veiculo");
+        if($id_veiculo > 0)
+            return $this->transacao("DELETE FROM veiculo WHERE id_veiculo = $id_veiculo");
         
         return false;
     }
