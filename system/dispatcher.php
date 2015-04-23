@@ -18,6 +18,8 @@ class Dispatcher {
 
 		require CONTROLLER . '/' . $this->controller . '.php';
 
+        $controller = new $this->controller();
+
 		if(count($queryString) > 2){
 			$parametros = [];
 
@@ -25,10 +27,8 @@ class Dispatcher {
 				$parametros[] = $queryString[$i];
 			}
 
-			@call_user_func_array(array($this->controller, $this->action), $parametros);
+			call_user_func_array(array($controller, $this->action), $parametros);
 		} else {
-			$controller = new $this->controller();
-
 			$action = $this->action;
 
 			$controller->$action();

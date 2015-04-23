@@ -17,7 +17,20 @@ abstract class Model {
 	//EXECUTA A SQL
 	public function executar($sql)
 	{
-		$this->driver->query($sql);
+		$query = $this->driver->query($sql);
+
+        return true;
+	}
+
+    //EXECUTA A SQL
+	public function transacao($sql)
+	{
+		$query = $this->driver->query($sql);
+
+        if(pg_affected_rows($query) > 0)
+            return true;
+
+        return false;
 	}
 
 	public function getRow()
