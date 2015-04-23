@@ -16,9 +16,9 @@
     <?php else: ?>
     <h3>Nenhuma cor dadastrada</h3>
     <?php endif; ?>
-    <p class="text-center">
-        <a href="?url=cor/cadastrar" class="btn btn-default">Cadastrar</a>
-    </p>
+    <div class="text-center">
+        <a href="<?php echo URL?>?url=cor/cadastrar" class="btn btn-default">Cadastrar</a>
+        <a href="<?php echo URL?>" class="btn btn-default">Inicio</a>
+    </div>
 </div>
-    
-<?php //$this->view->render('footer') ?>
+<?php $this->render('footer') ?>

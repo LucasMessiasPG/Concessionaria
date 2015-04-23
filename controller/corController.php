@@ -10,13 +10,14 @@ class corController extends Controller {
         
         $this->cor = $this->model('cor');
     }
+
+    public function indexAction(){
+        $this->view->render("cor/index");
+    }
     
-    public function indexAction()
-    {
-        $cores = $this->cor->listar();
-        
+    public function listarAction(){
         $view = array(
-            'cores' => $cores
+            'cores' => $this->cor->listar("cor")
         );
         
         $this->view->render('cor/listar', $view);
@@ -44,5 +45,6 @@ class corController extends Controller {
     {
         
     }
+
     
 }

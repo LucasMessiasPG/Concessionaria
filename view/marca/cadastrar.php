@@ -1,6 +1,8 @@
 <?php $this->render('header') ?>
-<form action="" method="POST">
-    <input type="text" name="marca">
+<h3>Cadastrar - Marca</h3>
+<form action="" method="post">
+   <label>Marca:</label>
+    <input type="text" name="nome">
     <input type="submit">
 </form>
-<?php $this->view->render('footer') ?>
+<?php $this->render('footer') ?>

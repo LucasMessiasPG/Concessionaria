@@ -1,5 +1,4 @@
 <?php $this->render('header') ?>
-
 <div class="container">
     <form action="" method="post">
         <h3>Cadastro de Marca</h3>
@@ -13,4 +12,4 @@
     </form>
 </div>
     
-<?php //$this->view->render('footer') ?>
+<?php $this->render('footer') ?>

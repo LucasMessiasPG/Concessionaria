@@ -9,7 +9,8 @@ define('VIEW', 'view');
 //CONSTANTE DE VIEW PARA O SISTEMA
 define('MODEL', 'model');
 
-define('URLBASE', 'http://localhost/concessionaria/public/');
+define('URL', 'http://localhost/concessionaria/?url=');
+define('PUBLICO', 'http://localhost/concessionaria/public/');
 
 //DEFINICOES PARA O BANCO DE DADOS
 

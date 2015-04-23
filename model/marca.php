@@ -1,12 +1,12 @@
 <?php
 
 class Marca extends Model{
-    
-    public function getMarca(int $marca){
-        $sql = "SELECT * FROM marca (nome) WHERE id_marca=$marca";
+
+    public function cadastrar($marca){
+        $sql = "INSERT INTO marca (nome) VALUES ('{$marca->nome}')";
         
         $this->executar($sql);
-        
-        
+
     }
+    
 }
