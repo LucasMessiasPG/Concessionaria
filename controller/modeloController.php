@@ -4,11 +4,14 @@ class modeloController extends Controller {
     
     private $modelo;
     
+    private $marca;
+    
     public function __construct()
     {
         parent::__construct();
         
         $this->modelo = $this->model('modelo');
+        $this->marca = $this->model('marca');
     }
     
     public function indexAction(){
@@ -31,13 +34,15 @@ class modeloController extends Controller {
             $this->modelo->nome = $_POST['nome'];
             $this->modelo->marca = $_POST['marca'];
 
-
             $this->modelo->cadastrar($this->modelo);
-
+            
+            $this->set_userdata('mensagem', 'Modelo cadastrado.');
         }
-        $lista = $this->modelo->listar("marca");
-        $this->view->render('modelo/cadastrar', $lista);
-        
+        $view = array(
+            'marcas' => $this->marca->listar()
+        );
+            
+        $this->view->render('modelo/cadastrar', $view);
     }
 
     public function alterarAction()
@@ -49,6 +54,8 @@ class modeloController extends Controller {
             $modelo->id_modelo = $_POST['id_modelo'];
 
             $this->cor->alterar($modelo);
+            
+            $this->set_userdata('mensagem', 'Modelo alterado.');
         }
     }
 

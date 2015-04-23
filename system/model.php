@@ -7,7 +7,7 @@ abstract class Model {
 	public function __construct()
 	{
 		//INSTANCIA O DRIVER RESPONSAVEL PELO MODELO
-		require 'driverModel/' . DRIVER . '.php';
+		require_once 'driverModel/' . DRIVER . '.php';
 
 		$classe = DRIVER;
 

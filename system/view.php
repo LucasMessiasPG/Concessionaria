@@ -11,5 +11,20 @@ class View {
         }
 		require VIEW . '/' . $uri . '.php';
 	}
+    
+    public function userdata($chave)
+    {
+        $session = isset($_SESSION[$chave]) ? $_SESSION[$chave] : '';
+        
+        if(isset($_SESSION[$chave]))
+            unset($_SESSION[$chave]);
+        
+        return $session;
+    }
+    
+    public function set_userdata($chave, $data)
+    {
+        return $_SESSION[$chave] = $data;
+    }
 
 }

@@ -29,7 +29,7 @@ class Veiculo extends Model {
 
     public function listar(){
         $sql = "SELECT
-                v.nome,
+                v.id_veiculo,
                 m.nome as modelo,
                 c.nome as cor,
                 v.placa,

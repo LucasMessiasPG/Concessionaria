@@ -20,4 +20,18 @@ abstract class Controller {
 
 		return new $classe();
 	}
+    
+    public function userdata($chave)
+    {
+        $mensagem = $_SESSION[$chave];
+        
+        unset($_SESSION[$chave]);
+        
+        return $mensagem;
+    }
+    
+    public function set_userdata($chave, $data)
+    {
+        return $_SESSION[$chave] = $data;
+    }
 }

@@ -34,6 +34,7 @@ class marcaController extends Controller {
         }
         $this->view->render('marca/cadastrar');
         
+        $this->set_userdata('mensagem', 'Marca cadastrada.');   
     }
     
     public function alterarAction()
@@ -45,6 +46,8 @@ class marcaController extends Controller {
             $marca->id_marca = $_POST['id_marca'];
 
             $this->cor->alterar($marca);
+            
+            $this->set_userdata('mensagem', 'Marca alterada.');
         }
     }
     

@@ -31,6 +31,8 @@ class corController extends Controller {
             $cor->nome = $_POST['nome'];
 
             $this->cor->cadastrar($cor);
+            
+            $this->set_userdata('mensagem', 'Cor cadastrada.');
         }
         
         $this->view->render('cor/cadastrar');
@@ -45,6 +47,8 @@ class corController extends Controller {
             $cor->id_cor = $_POST['id_cor'];
 
             $this->cor->alterar($cor);
+            
+            $this->set_userdata('mensagem', 'Cor alterado.');
         }
     }
     
