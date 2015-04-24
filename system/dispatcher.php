@@ -6,8 +6,13 @@ class Dispatcher {
 
 	protected $action;
     
+    /**
+    * faz a rota para direcionar para o controller e action
+    */
+
 	public function route()
 	{
+        //constroi url para direcionar para controller e sua acao
 		$queryString = !empty($_GET['url']) ? $_GET['url'] : 'index/index';
 
 		$queryString = explode('/', $queryString);
@@ -20,6 +25,7 @@ class Dispatcher {
 
         $controller = new $this->controller();
 
+        //Se tiver parametros executa a listagem de todos os parametros
 		if(count($queryString) > 2){
 			$parametros = [];
 
@@ -29,6 +35,7 @@ class Dispatcher {
 
 			call_user_func_array(array($controller, $this->action), $parametros);
 		} else {
+            //Executa acao sem parametros
 			$action = $this->action;
 
 			$controller->$action();
