@@ -43,8 +43,10 @@ class Cor extends Model {
 
         $mensagem = '';
 
-        if($veiculos > 0)
-           $mensagem .= "$veiculos veículos deletados.<br />";
+        if($veiculos == 1)
+           $mensagem .= "$veiculos veículo foi deletado.<br />";
+        elseif($veiculos > 1)
+           $mensagem .= "$veiculos veículos foram deletados.<br />";
 
         if($cor > 0)
            $mensagem .= "Cor deletada.";
