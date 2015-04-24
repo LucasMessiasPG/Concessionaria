@@ -26,7 +26,7 @@
                 <a href="<?php echo URL ?>veiculo/alterar/<?php echo $veiculo->id_veiculo ?>">
                     <i class="glyphicon glyphicon-edit"></i> Alterar
                 </a>
-                <a href="<?php echo URL ?>veiculo/excluir/<?php echo $veiculo->id_veiculo ?>">
+                <a class="confirmar" href="<?php echo URL ?>veiculo/excluir/<?php echo $veiculo->id_veiculo ?>">
                     <i class="glyphicon glyphicon-remove-circle"></i> Excluir
                 </a>
             </td>
