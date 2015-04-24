@@ -68,7 +68,7 @@ class corController extends Controller {
             $cor = new StdClass();
 
             $cor->nome = $_POST['nome'];
-            $cor->id_cor = $_POST['id_cor'];
+            $cor->id_cor = $id_cor;
 
             if($this->cor->alterar($cor))
                 $this->set_userdata('mensagem', 'Cor alterado.');
@@ -76,21 +76,35 @@ class corController extends Controller {
                 $this->set_userdata('error', 'Erro ao alterar Cor.');
         }
 
-        $this->view->render('cor/alterar');
+        $view = array(
+            'cor' => $cor
+        );
+
+        $this->view->render('cor/alterar', $view);
     }
     
     public function excluirAction($id_cor = '')
     {
-        $this->view->render('cor/alterar');
+        $cor = $this->validacao($id_cor);
+
+        if($mensagem = $this->cor->excluir($id_cor)){
+            $this->set_userdata('mensagem', $mensagem);
+
+            $view = array('voltar' => 'cor/listar');
+
+            $this->view->render('excluir', $view);
+        } else {
+            $this->redirect('cor/listar');
+        }
     }
 
     protected function validacao($id_cor)
     {
-        $cor = $this->veiculo->get($id_cor);
+        $cor = $this->cor->get($id_cor);
 
         if(!($id_cor > 0) || !$cor)
             $this->redirect('veiculo/listar');
 
-        return $veiculo;
+        return $cor;
     }
 }

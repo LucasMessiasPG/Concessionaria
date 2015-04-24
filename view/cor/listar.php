@@ -13,10 +13,10 @@
             <td><?php echo $cor->id_cor ?></td>
             <td><?php echo $cor->nome ?></td>
             <td>
-                <a href="<?php echo URL ?>modelo/alterar/<?php echo $modelo->id_modelo ?>">
+                <a href="<?php echo URL ?>cor/alterar/<?php echo $cor->id_cor ?>">
                     <i class="glyphicon glyphicon-edit"></i> Alterar
                 </a>
-                <a href="<?php echo URL ?>modelo/excluir/<?php echo $modelo->id_modelo ?>">
+                <a href="<?php echo URL ?>cor/excluir/<?php echo $cor->id_cor ?>">
                     <i class="glyphicon glyphicon-remove-circle"></i> Excluir
                 </a>
             </td>

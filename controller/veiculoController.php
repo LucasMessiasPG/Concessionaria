@@ -89,6 +89,8 @@ class veiculoController extends Controller {
     
     public function excluirAction($id_veiculo = '')
     {
+        $veiculo = $this->validacao($id_veiculo);
+
         if($this->veiculo->excluir($id_veiculo)){
             $this->set_userdata('mensagem', 'Veículo excluido.');
             
