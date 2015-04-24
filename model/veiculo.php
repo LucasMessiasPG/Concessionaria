@@ -48,7 +48,7 @@ class Veiculo extends Model {
 
         $sql = "UPDATE veiculo SET $campos WHERE id={$veiculo->id_veiculo}";
 
-        $this->transacao($sql);
+        return $this->transacao($sql);
     }
 
     /**
