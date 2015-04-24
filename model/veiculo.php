@@ -36,17 +36,17 @@ class Veiculo extends Model {
     * @return Boolean
     */
 
-    public function alterar($veiculo){
+    public function alterar($veiculo, $id_veiculo){
         $campos = [];
-        $campos[] = 'id_modelo={$veiculo->id_modelo}';
-        $campos[] = 'id_cor={$veiculo->id_cor}';
-        $campos[] = 'placa={$veiculo->placa}';
-        $campos[] = 'ano_fabricacao={$veiculo->ano_fabricacao}';
-        $campos[] = 'ano_modelo={$veiculo->ano_modelo}';
-        $campos[] = 'preco={$veiculo->preco}';
+        $campos[] = "id_modelo={$veiculo->id_modelo}";
+        $campos[] = "id_cor={$veiculo->id_cor}";
+        $campos[] = "placa='{$veiculo->placa}'";
+        $campos[] = "ano_fabricacao={$veiculo->ano_fabricacao}";
+        $campos[] = "ano_modelo={$veiculo->ano_modelo}";
+        $campos[] = "preco={$veiculo->preco}";
         $campos = implode(', ', $campos);
 
-        $sql = "UPDATE veiculo SET $campos WHERE id={$veiculo->id_veiculo}";
+        $sql = "UPDATE veiculo SET $campos WHERE id_veiculo=$id_veiculo";
 
         return $this->transacao($sql);
     }

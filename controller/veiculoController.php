@@ -59,30 +59,32 @@ class veiculoController extends Controller {
     public function alterarAction($id_veiculo = '')
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $marca = new StdClass();
+            $veiculo = new StdClass();
 
             $veiculo->placa = $_POST['placa'];
-            $veiculo->id_modelo = $_POST['modelo'];
-            $veiculo->id_cor = $_POST['cor'];
+            $veiculo->id_modelo = $_POST['id_modelo'];
+            $veiculo->id_cor = $_POST['id_cor'];
             $veiculo->ano_fabricacao = $_POST['ano_fabricacao'];
             $veiculo->ano_modelo = $_POST['ano_modelo'];
             $veiculo->preco = $_POST['preco'];
 
-            $this->cor->alterar($modelo);
-            
-            $this->set_userdata('mensagem', 'Veículo alterado.');
+            if($this->veiculo->alterar($veiculo, $id_veiculo)){
+                $this->set_userdata('mensagem', 'Veículo alterado.');
+            } else {
+                $this->set_userdata('error', 'Erro ao alterar Veículo.');
+            }
         }
 
-        if(!($id_veiculo > 0))
-            $this->redirect('veiculo/listar');
+        $veiculo = $this->veiculo->get($id_veiculo);
 
-        $modelo = $this->modelo->get();
+        if(!($id_veiculo > 0) || !$veiculo)
+            $this->redirect('veiculo/listar');
 
         $view = array(
             'modelos' => $this->modelo->listar(),
             'cores' => $this->cor->listar(),
             'anos' => $this->anos(),
-            'modelo' => $modelo
+            'veiculoAtual' => $veiculo
         );
 
         $this->view->render('veiculo/alterar', $view);
