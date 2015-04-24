@@ -67,7 +67,15 @@ class marcaController extends Controller {
     {
         $marca = $this->validacao($id_marca);
         
-        $this->marca->excluir($marca);
+        if($mensagem = $this->marca->excluir($id_marca)){
+            $this->set_userdata('mensagem', $mensagem);
+
+            $view = array('voltar' => 'marca/listar');
+            $this->view->render('excluir', $view);
+        } else {
+        print_r($mensagem);
+            //$this->redirect('marca/listar');
+        }
     }
 
     /**

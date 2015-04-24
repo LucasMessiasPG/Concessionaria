@@ -34,8 +34,26 @@ class Marca extends Model{
         $this->transacao($sql);
     }
 
-    public function excluir($marca){
-        echo 1;
+    public function excluir($id_marca)
+    {
+
+        $modelo = $this->transacao("DELETE FROM modelo WHERE id_marca=$id_marca");
+
+        $marca = $this->transacao("DELETE FROM marca WHERE id_marca=$id_marca");
+
+        $mensagem = '';
+
+
+        if($modelo > 0)
+           $mensagem .= count($modelo)." modelos deletados.<br />";
+
+        if($marca > 0)
+           $mensagem .= "Marca deletada.";
+
+        if($mensagem != '')
+            return $mensagem;
+
+        return false;
     }
 
 }
