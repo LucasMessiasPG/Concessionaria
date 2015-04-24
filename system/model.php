@@ -14,7 +14,11 @@ abstract class Model {
 		$this->driver = new $classe();
 	}
 
-	//EXECUTA A SQL
+	/**
+    * executa uma SQL
+    * @return Boolean/Numeric
+    */
+
 	public function executar($sql)
 	{
 		$query = $this->driver->query($sql);
@@ -27,21 +31,37 @@ abstract class Model {
         return false;
 	}
 
-    //EXECUTA A SQL
+    /**
+    * faz uma transacao uma SQL com retorno de quantas linhas foram afetadas
+    * @return Boolean/Numeric
+    */
+
 	public function transacao($sql)
 	{
 		$query = $this->driver->query($sql);
 
+        $affected_rows = pg_affected_rows($query);
+
         if(pg_affected_rows($query) > 0)
-            return true;
+            return $affected_rows;
 
         return false;
 	}
+
+    /**
+    * retornar colunas
+    * @return Object
+    */
 
 	public function getRow()
 	{
 		return $this->driver->getRow();
 	}
+
+    /**
+    * retornar lista de objetos
+    * @return Array Object
+    */
 
 	public function getRows()
 	{
