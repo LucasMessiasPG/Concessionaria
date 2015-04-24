@@ -33,18 +33,29 @@ class veiculoController extends Controller {
     public function cadastrarAction()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $veiculo = new StdClass();
-            
-            $veiculo->id_modelo = $_POST['id_modelo'];
-            $veiculo->id_cor = $_POST['id_cor'];
-            $veiculo->placa = $_POST['placa'];
-            $veiculo->ano_fabricacao = $_POST['ano_fabricacao'];
-            $veiculo->ano_modelo = $_POST['ano_modelo'];
-            $veiculo->preco = $_POST['preco'];
-            
-            $this->veiculo->cadastrar($veiculo);
-            
-            $this->set_userdata('mensagem', 'Veículo cadastrado.');
+            if(strpos($_POST['placa'], '-') === false){
+                $_POST['placa'] = substr($_POST['placa'], 0, 3) . '-' . substr($_POST['placa'], 3);
+            }
+
+            if(strlen($_POST['placa']) != 8){
+                $this->set_userdata('error', 'Placa incorreta.');
+            }
+            elseif(!is_numeric($_POST['preco'])){
+                $this->set_userdata('error', 'Preço incorreto.');
+            } else {
+                $veiculo = new StdClass();
+
+                $veiculo->id_modelo = $_POST['id_modelo'];
+                $veiculo->id_cor = $_POST['id_cor'];
+                $veiculo->placa = $_POST['placa'];
+                $veiculo->ano_fabricacao = $_POST['ano_fabricacao'];
+                $veiculo->ano_modelo = $_POST['ano_modelo'];
+                $veiculo->preco = $_POST['preco'];
+
+                $this->veiculo->cadastrar($veiculo);
+
+                $this->set_userdata('mensagem', 'Veículo cadastrado.');
+            }
         }
 
         $view = array(
@@ -80,19 +91,30 @@ class veiculoController extends Controller {
         $veiculo = $this->validacao($id_veiculo);
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $veiculo = new StdClass();
+            if(strpos($_POST['placa'], '-') === false){
+                $_POST['placa'] = substr($_POST['placa'], 0, 3) . '-' . substr($_POST['placa'], 3);
+            }
 
-            $veiculo->placa = $_POST['placa'];
-            $veiculo->id_modelo = $_POST['id_modelo'];
-            $veiculo->id_cor = $_POST['id_cor'];
-            $veiculo->ano_fabricacao = $_POST['ano_fabricacao'];
-            $veiculo->ano_modelo = $_POST['ano_modelo'];
-            $veiculo->preco = $_POST['preco'];
-
-            if($this->veiculo->alterar($veiculo, $id_veiculo)){
-                $this->set_userdata('mensagem', 'Veículo alterado.');
+            if(strlen($_POST['placa']) != 8){
+                $this->set_userdata('error', 'Placa incorreta.');
+            }
+            elseif(!is_numeric($_POST['preco'])){
+                $this->set_userdata('error', 'Preço incorreto.');
             } else {
-                $this->set_userdata('error', 'Erro ao alterar Veículo.');
+                $veiculo = new StdClass();
+
+                $veiculo->placa = $_POST['placa'];
+                $veiculo->id_modelo = $_POST['id_modelo'];
+                $veiculo->id_cor = $_POST['id_cor'];
+                $veiculo->ano_fabricacao = $_POST['ano_fabricacao'];
+                $veiculo->ano_modelo = $_POST['ano_modelo'];
+                $veiculo->preco = $_POST['preco'];
+
+                if($this->veiculo->alterar($veiculo, $id_veiculo)){
+                    $this->set_userdata('mensagem', 'Veículo alterado.');
+                } else {
+                    $this->set_userdata('error', 'Erro ao alterar Veículo.');
+                }
             }
         }
 

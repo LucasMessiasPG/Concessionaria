@@ -46,9 +46,17 @@
             <span class="input-group-addon">.00</span>
         </div>
     </div>
+
+    <br />
+
     <div class="text-center">
         <input type="submit" class="btn btn-success" />
         <a href="<?php echo URL ?>veiculo" class="btn btn-default">Voltar</a>
+
+        <div class="btn-group">
+            <a href="<?php echo URL ?>modelo/cadastrar" class="btn btn-primary">Cadastrar Modelo</a>
+            <a href="<?php echo URL ?>cor/cadastrar" class="btn btn-primary">Cadastrar Cor</a>
+        </div>
     </div>
 </form>
 <?php else: ?>
