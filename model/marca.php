@@ -36,16 +36,7 @@ class Marca extends Model{
 
     public function excluir($id_marca)
     {
-        $this->transacao("SELECT * FROM modelo WHERE id_marca=$id_marca");
-
-        $array = (
-            "modelos" => $this->getRows()
-        );
-
-        foreach ($array as $modelo) {
-          $veiculo = $this->transacao("DELETE FROM veiculo WHERE id_modelo='{$modelo->id_modelo}'");
-        }
-
+        $veiculo = $this->transacao("DELETE FROM veiculo WHERE id_modelo IN(SELECT id_modelo as modelos FROM modelo WHERE id_marca=$id_marca)");
 
         $modelo = $this->transacao("DELETE FROM modelo WHERE id_marca='$id_marca'");
 
@@ -54,11 +45,15 @@ class Marca extends Model{
         $mensagem = '';
 
 
-        if($veiculo > 0)
-           $mensagem .= count($veiculo)." veiculos deletados.<br />";
+        if($veiculo == 1)
+           $mensagem .= $veiculo." veiculo foi deletado.<br />";
+        elseif($veiculo > 1)
+           $mensagem .= $veiculo." veiculos foram deletados.<br />";
 
-        if($modelo > 0)
-           $mensagem .= count($modelo)." modelos deletados.<br />";
+        if($modelo == 1)
+           $mensagem .= $modelo." modelo foi deletado.<br />";
+        elseif($modelo > 1)
+           $mensagem .= $modelo." modelos foram deletados.<br />";
 
         if($marca > 0)
            $mensagem .= "Marca deletada.";
