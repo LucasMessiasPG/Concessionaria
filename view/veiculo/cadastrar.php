@@ -6,7 +6,7 @@
         <label for="nome">Modelo</label>
         <select class="form-control" name="id_modelo">
             <?php foreach($modelos as $modelo): ?>
-            <option value="<?php echo $modelo->id_marca ?>"><?php echo ucwords($modelo->nome) ?></option>
+            <option value="<?php echo $modelo->id_modelo ?>"><?php echo ucwords($modelo->nome) ?></option>
             <?php endforeach ?>
         </select>
     </div>

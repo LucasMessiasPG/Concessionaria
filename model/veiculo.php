@@ -64,10 +64,12 @@ class Veiculo extends Model {
                 v.placa,
                 v.ano_fabricacao,
                 v.ano_modelo,
-                v.preco
+                v.preco,
+                ma.nome as marca
                 FROM veiculo v
                 INNER JOIN modelo m ON v.id_modelo = m.id_modelo
                 INNER JOIN cor c ON v.id_cor = c.id_cor
+                INNER JOIN marca ma ON ma.id_marca = m.id_marca
                 ORDER BY modelo";
 
         $this->transacao($sql);

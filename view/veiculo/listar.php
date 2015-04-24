@@ -4,6 +4,7 @@
 <table class="table">
     <thead>
         <th>ID</th>
+        <th>Marca</th>
         <th>Modelo</th>
         <th>Placa</th>
         <th>Ano Fabricação</th>
@@ -15,6 +16,7 @@
         <?php foreach ($veiculos as $veiculo): ?>
         <tr>
             <td><?php echo $veiculo->id_veiculo ?></td>
+            <td><?php echo $veiculo->marca ?></td>
             <td><?php echo $veiculo->modelo ?></td>
             <td><?php echo $veiculo->placa ?></td>
             <td><?php echo $veiculo->ano_fabricacao ?></td>
