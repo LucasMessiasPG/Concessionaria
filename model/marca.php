@@ -6,7 +6,7 @@ class Marca extends Model{
     {
         $sql = "SELECT * FROM marca ORDER BY nome";
 
-        $this->executar($sql);
+        $this->transacao($sql);
 
         return $this->getRows();
     }
@@ -15,7 +15,7 @@ class Marca extends Model{
     {
         $sql = "SELECT nome FROM marca WHERE id_marca=$id_marca LIMIT 1";
 
-        $this->executar($sql);
+        $this->transacao($sql);
 
         return $this->getRow();
     }
@@ -23,7 +23,7 @@ class Marca extends Model{
     public function cadastrar($marca){
         $sql = "INSERT INTO marca (nome) VALUES ('{$marca->nome}')";
         
-        $this->executar($sql);
+        $this->transacao($sql);
 
     }
     
@@ -31,7 +31,7 @@ class Marca extends Model{
     {
         $sql = "UPDATE marca SET nome = {$marca->nome} WHERE id={$marca->id_marca}";
 
-        $this->executar($sql);
+        $this->transacao($sql);
     }
 
 }

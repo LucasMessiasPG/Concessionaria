@@ -45,7 +45,8 @@ class modeloController extends Controller {
         $this->view->render('modelo/cadastrar', $view);
     }
 
-    public function alterarAction()
+
+    public function alterarAction($id_modelo)
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $modelo = new StdClass();
@@ -57,6 +58,18 @@ class modeloController extends Controller {
             
             $this->set_userdata('mensagem', 'Modelo alterado.');
         }
+
+
+        $modelo = $this->modelo->get($id_modelo);
+
+        $view = array (
+            'modelo' => $modelo
+        );
+
+
+
+        $this->view->render('modelo/alterar', $view);
+
     }
 
     

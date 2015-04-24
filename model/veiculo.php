@@ -11,7 +11,7 @@ class Veiculo extends Model {
 	{
 		$sql = "INSERT INTO veiculo (id_modelo,id_cor,placa,ano_fabricacao,ano_modelo,preco)";
         $sql .= "VALUES ('$veiculo->id_modelo','$veiculo->id_cor','$veiculo->placa','$veiculo->ano_fabricacao','$veiculo->ano_modelo','$veiculo->preco')";
-		$this->executar($sql);
+		$this->transacao($sql);
 
 		return $this->getRow();
 	}
@@ -70,7 +70,7 @@ class Veiculo extends Model {
                 INNER JOIN cor c ON v.id_cor = c.id_cor
                 ORDER BY modelo";
 
-        $this->executar($sql);
+        $this->transacao($sql);
 
         return $this->getRows();
     }
