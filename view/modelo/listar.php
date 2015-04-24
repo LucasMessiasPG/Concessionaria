@@ -19,7 +19,7 @@
                     <a href="<?php echo URL ?>modelo/alterar/<?php echo $modelo->id_modelo ?>">
                         <i class="glyphicon glyphicon-edit"></i> Alterar
                     </a>
-                    <a href="<?php echo URL ?>modelo/excluir/<?php echo $modelo->id_modelo ?>">
+                    <a class="confirmar" href="<?php echo URL ?>modelo/excluir/<?php echo $modelo->id_modelo ?>">
                         <i class="glyphicon glyphicon-remove-circle"></i> Excluir
                     </a>
                 </td>
