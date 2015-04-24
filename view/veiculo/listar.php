@@ -6,6 +6,7 @@
         <th>ID</th>
         <th>Marca</th>
         <th>Modelo</th>
+        <th>Cor</th>
         <th>Placa</th>
         <th>Ano Fabricação</th>
         <th>Ano Modelo</th>
@@ -18,6 +19,7 @@
             <td><?php echo $veiculo->id_veiculo ?></td>
             <td><?php echo $veiculo->marca ?></td>
             <td><?php echo $veiculo->modelo ?></td>
+            <td><?php echo $veiculo->cor ?></td>
             <td><?php echo $veiculo->placa ?></td>
             <td><?php echo $veiculo->ano_fabricacao ?></td>
             <td><?php echo $veiculo->ano_modelo ?></td>

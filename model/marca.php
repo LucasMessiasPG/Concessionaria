@@ -36,13 +36,26 @@ class Marca extends Model{
 
     public function excluir($id_marca)
     {
+        $this->transacao("SELECT * FROM modelo WHERE id_marca=$id_marca");
 
-        $modelo = $this->transacao("DELETE FROM modelo WHERE id_marca=$id_marca");
+        $array = (
+            "modelos" => $this->getRows()
+        );
 
-        $marca = $this->transacao("DELETE FROM marca WHERE id_marca=$id_marca");
+        foreach ($array as $modelo) {
+          $veiculo = $this->transacao("DELETE FROM veiculo WHERE id_modelo='{$modelo->id_modelo}'");
+        }
+
+
+        $modelo = $this->transacao("DELETE FROM modelo WHERE id_marca='$id_marca'");
+
+        $marca = $this->transacao("DELETE FROM marca WHERE id_marca='$id_marca'");
 
         $mensagem = '';
 
+
+        if($veiculo > 0)
+           $mensagem .= count($veiculo)." veiculos deletados.<br />";
 
         if($modelo > 0)
            $mensagem .= count($modelo)." modelos deletados.<br />";
