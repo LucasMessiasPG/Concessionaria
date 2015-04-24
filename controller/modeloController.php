@@ -32,7 +32,7 @@ class modeloController extends Controller {
             $modelo = new StdClass();
 
             $this->modelo->nome = $_POST['nome'];
-            $this->modelo->marca = $_POST['marca'];
+            $this->modelo->id_marca = $_POST['id_marca'];
 
             $this->modelo->cadastrar($this->modelo);
             

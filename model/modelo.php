@@ -39,13 +39,13 @@ class Modelo extends Model{
     }
 
     public function cadastrar($modelo){
-        $sql = "INSERT INTO modelo (nome,id_marca) VALUES ('{$modelo->nome}','{$modelo->marca}')";
+        $sql = "INSERT INTO modelo (nome,id_marca) VALUES ('{$modelo->nome}','{$modelo->id_marca}')";
         $this->transacao($sql);
     }
 
     public function alterar($modelo)
     {
-        $sql = "UPDATE modelo SET nome = '{$modelo->nome}', id_marca = '{$modelo->id_marca}' WHERE id_modelo={$modelo->id_modelo}";
+        $sql = "UPDATE modelo SET nome = '{$modelo->nome}', id_marca = '{$modelo->id_marca}' WHERE id_modelo='{$modelo->id_modelo}'";
 
         $this->transacao($sql);
     }
