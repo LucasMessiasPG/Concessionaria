@@ -6,6 +6,8 @@ class veiculoController extends Controller {
     
     private $marca;
     
+    private $modelo;
+
     private $cor;
     
     /**
@@ -17,6 +19,7 @@ class veiculoController extends Controller {
         parent::__construct();
         
         $this->veiculo = $this->model('veiculo');
+        $this->marca = $this->model('marca');
         $this->modelo = $this->model('modelo');
         $this->cor = $this->model('cor');
     }
@@ -40,6 +43,9 @@ class veiculoController extends Controller {
             if(strlen($_POST['placa']) != 8){
                 $this->set_userdata('error', 'Placa incorreta.');
             }
+            elseif(empty($_POST['id_modelo'])){
+                $this->set_userdata('error', 'Selecione um modelo.');
+            }
             elseif(!is_numeric($_POST['preco'])){
                 $this->set_userdata('error', 'Preço incorreto.');
             } else {
@@ -59,6 +65,7 @@ class veiculoController extends Controller {
         }
 
         $view = array(
+            'marcas' => $this->marca->listar(),
             'modelos' => $this->modelo->listar(),
             'cores' => $this->cor->listar(),
             'anos' => $this->anos()
@@ -98,6 +105,9 @@ class veiculoController extends Controller {
             if(strlen($_POST['placa']) != 8){
                 $this->set_userdata('error', 'Placa incorreta.');
             }
+            elseif(empty($_POST['id_modelo'])){
+                $this->set_userdata('error', 'Selecione um modelo.');
+            }
             elseif(!is_numeric($_POST['preco'])){
                 $this->set_userdata('error', 'Preço incorreto.');
             } else {
@@ -119,6 +129,7 @@ class veiculoController extends Controller {
         }
 
         $view = array(
+            'marcas' => $this->marca->listar(),
             'modelos' => $this->modelo->listar(),
             'cores' => $this->cor->listar(),
             'anos' => $this->anos(),
@@ -146,6 +157,11 @@ class veiculoController extends Controller {
         } else {
             $this->redirect('veiculo/listar');
         }
+    }
+
+    public function listarmarcaAction($id_marca = '')
+    {
+        echo json_encode($this->modelo->listar());
     }
     
     /**
