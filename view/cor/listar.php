@@ -16,7 +16,7 @@
                 <a href="<?php echo URL ?>cor/alterar/<?php echo $cor->id_cor ?>">
                     <i class="glyphicon glyphicon-edit"></i> Alterar
                 </a>
-                <a href="<?php echo URL ?>cor/excluir/<?php echo $cor->id_cor ?>">
+                <a class="confirmar" href="<?php echo URL ?>cor/excluir/<?php echo $cor->id_cor ?>">
                     <i class="glyphicon glyphicon-remove-circle confirm"></i> Excluir
                 </a>
             </td>

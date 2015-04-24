@@ -1,12 +1,5 @@
 </div>
 <script>
-<<<<<<< HEAD
-    $(document).ready(function(){
-        $('.confirm').click(function(){
-            confirm('teste');
-        });
-    });
-=======
 $(document).ready(function(){
     $('a.confirmar').click(function(e) {
         e.preventDefault();
@@ -19,7 +12,7 @@ $(document).ready(function(){
     });
 
 });
->>>>>>> origin/jonas
+
 </script>
 </body>
 </html>

@@ -3,6 +3,15 @@
 <form action="" method="post" class="form-horizontal">
     <h3>Cadastro de Veículo</h3>
     <div>
+        <label for="marca">Marca</label>
+        <select id="marca" class="form-control" name="id_marca">
+            <option value="">Selecione</option>
+            <?php foreach($marcas as $marca): ?>
+            <option value="<?php echo $marca->id_marca ?>"><?php echo ucwords($marca->nome) ?></option>
+            <?php endforeach ?>
+        </select>
+    </div>
+    <div>
         <label for="nome">Modelo</label>
         <select class="form-control" name="id_modelo">
             <?php foreach($modelos as $modelo): ?>
@@ -59,6 +68,7 @@
         </div>
     </div>
 </form>
+<?php $this->render('veiculo/script') ?>
 <?php else: ?>
 <div class="alert alert-success text-center">
     Precisar exister pelo menos 1 modelo, cor para cadastrar um veículo
