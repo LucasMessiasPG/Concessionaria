@@ -39,6 +39,9 @@ class marcaController extends Controller {
     
     public function alterarAction($id_marca)
     {
+        if ($id_marca == ''){
+            $this->redirect('marca');
+        }
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $marca = new StdClass();
 

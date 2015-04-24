@@ -7,7 +7,7 @@
     </p>
     <p class="text-center">
         <input type="submit" class="btn btn-success" />
-        <a href="<?php echo URL ?>marca" class="btn btn-default">Voltar</a>
+        <a href="<?php echo URL ?>marca/listar" class="btn btn-default">Voltar</a>
     </p>
 </form>
 <?php $this->render('footer') ?>
