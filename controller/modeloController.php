@@ -90,6 +90,11 @@ class modeloController extends Controller {
         }
     }
 
+    public function selectAction($id_marca = '')
+    {
+        echo json_encode($this->modelo->listar("m.id_marca = $id_marca"));
+    }
+
     /**
     *assegura que virá alguma coisa na query
     * @return dados_modelos

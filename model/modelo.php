@@ -2,8 +2,12 @@
 
 class Modelo extends Model{
 
-    public function listar()
+    public function listar($where = '')
     {
+        if($where != ''){
+            $where = "WHERE $where";
+        }
+
         $sql = "SELECT
                 mo.id_modelo,
                 mo.id_marca,
@@ -11,6 +15,7 @@ class Modelo extends Model{
                 m.nome as marca
                 FROM modelo mo
                 INNER JOIN marca m ON mo.id_marca=m.id_marca
+                $where
                 ORDER BY nome";
 
 

@@ -158,11 +158,6 @@ class veiculoController extends Controller {
             $this->redirect('veiculo/listar');
         }
     }
-
-    public function listarmarcaAction($id_marca = '')
-    {
-        echo json_encode($this->modelo->listar());
-    }
     
     /**
     * funcao para montar select de ano_fabricacao e ano_modelo

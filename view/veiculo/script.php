@@ -5,7 +5,7 @@
                 value = $(this).val();
 
             if(value != ''){
-                $.getJSON('<?php echo URL ?>veiculo/listarmarca/'+value, function(data) {
+                $.getJSON('<?php echo URL ?>modelo/select/'+value, function(data) {
                     modelos.empty();
 
                     var option;
