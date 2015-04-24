@@ -6,7 +6,7 @@
         <label for="nome">Modelo</label>
         <select class="form-control" name="id_modelo">
             <?php foreach($modelos as $modelo): ?>
-            <option value="<?php echo $modelo->id_marca ?>"><?php echo $modelo->nome ?></option>
+            <option value="<?php echo $modelo->id_modelo ?>"<?php if($veiculoAtual->id_modelo==$modelo->id_modelo): ?> selected<?php endif; ?>><?php echo $modelo->nome ?></option>
             <?php endforeach ?>
         </select>
     </div>
@@ -14,19 +14,19 @@
         <label for="nome">Cor</label>
         <select class="form-control" name="id_cor">
             <?php foreach($cores as $cor): ?>
-            <option value="<?php echo $cor->id_cor ?>"><?php echo $cor->nome ?></option>
+            <option value="<?php echo $cor->id_cor ?>"<?php if($veiculoAtual->id_cor==$cor->id_cor): ?> selected<?php endif; ?>><?php echo $cor->nome ?></option>
             <?php endforeach ?>
         </select>
     </div>
     <div>
         <label for="nome">Placa</label>
-        <input type="text" name="placa" class="form-control" />
+        <input type="text" name="placa" value="<?php echo $veiculoAtual->placa ?>" class="form-control" />
     </div>
     <div>
         <label for="nome">Ano Fabricação</label>
         <select class="form-control" name="ano_fabricacao">
             <?php foreach($anos as $ano): ?>
-            <option value="<?php echo $ano ?>"><?php echo $ano ?></option>
+            <option value="<?php echo $ano ?>"<?php if($veiculoAtual->ano_fabricacao==$ano): ?> selected<?php endif; ?>><?php echo $ano ?></option>
             <?php endforeach ?>
         </select>
     </div>
@@ -34,7 +34,7 @@
         <label for="nome">Ano Modelo</label>
         <select class="form-control" name="ano_modelo">
             <?php foreach($anos as $ano): ?>
-            <option value="<?php echo $ano ?>"><?php echo $ano ?></option>
+            <option value="<?php echo $ano ?>"<?php if($veiculoAtual->ano_modelo==$ano): ?> selected<?php endif; ?>><?php echo $ano ?></option>
             <?php endforeach ?>
         </select>
     </div>
@@ -42,7 +42,7 @@
         <label for="nome">Preço</label>
         <div class="input-group">
             <span class="input-group-addon">R$</span>
-            <input type="text" class="form-control" name="preco">
+            <input type="text" class="form-control" name="preco" value="<?php echo $veiculoAtual->preco ?>">
             <span class="input-group-addon">.00</span>
         </div>
     </div>
