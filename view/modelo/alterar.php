@@ -3,7 +3,7 @@
     <h3>Alterar Modelo</h3>
     <p>
         <label>Marca</label>
-        <select class="form-control" name="marca">
+        <select class="form-control" name="id_marca">
             <?php foreach($marcas as $marca): ?>
                 <option value="<?php echo $marca->id_marca ?>" <?php if($modeloAtual->id_marca == $marca->id_marca): ?>SELECTED <?php endif; ?> ><?php echo ucwords($marca->nome) ?></option>
             <?php endforeach ?>

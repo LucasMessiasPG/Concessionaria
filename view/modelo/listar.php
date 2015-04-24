@@ -29,7 +29,7 @@
     </table>
     <?php else: ?>
     <h3>Nenhum modelo dadastrado</h3>
-    <?php endif; print_r($modelo); ?>
+    <?php endif; ?>
     <div class="text-center">
         <a href="<?php echo URL?>modelo/cadastrar" class="btn btn-default">Cadastrar</a>
         <a href="<?php echo URL?>" class="btn btn-default">Inicio</a>

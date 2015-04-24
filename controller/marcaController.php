@@ -39,9 +39,8 @@ class marcaController extends Controller {
     
     public function alterarAction($id_marca)
     {
-        if ($id_marca == ''){
-            $this->redirect('marca');
-        }
+        $marca = $this->validacao($id_marca);
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $marca = new StdClass();
 
@@ -53,7 +52,7 @@ class marcaController extends Controller {
             $this->set_userdata('mensagem', 'Marca alterada.');
         }
 
-        $marca = $this->marca->get($id_marca);
+
 
         $view = array (
             'marca' => $marca
@@ -66,7 +65,23 @@ class marcaController extends Controller {
     
     public function excluirAction($id_marca)
     {
+        $marca = $this->validacao($id_marca);
         
+        $this->marca->excluir($marca);
+    }
+
+    /**
+    *assegura que virá alguma coisa na query
+    * @return dados_modelos
+    */
+    protected function validacao($id_marca)
+    {
+        $marca = $this->marca->get($id_marca);
+
+        if(!($id_marca > 0) || !$marca)
+            $this->redirect('marca/listar');
+
+        return $marca;
     }
     
 }

@@ -34,4 +34,8 @@ class Marca extends Model{
         $this->transacao($sql);
     }
 
+    public function excluir($marca){
+        echo 1;
+    }
+
 }

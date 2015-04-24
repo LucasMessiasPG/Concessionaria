@@ -4,7 +4,7 @@
     <h3>Cadastro de Modelo</h3>
     <div>
        <label>Marca</label>
-        <select class="form-control" name="marca">
+        <select class="form-control" name="id_marca">
             <?php foreach($marcas as $marca): ?>
             <option value="<?php echo $marca->id_marca ?>"><?php echo ucwords($marca->nome) ?></option>
             <?php endforeach ?>

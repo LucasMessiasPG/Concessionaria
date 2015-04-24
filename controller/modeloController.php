@@ -46,24 +46,23 @@ class modeloController extends Controller {
     }
 
 
-    public function alterarAction($id_modelo)
+    public function alterarAction($id_modelo = '')
     {
-        if ($id_modelo == '') {
-            $this->redirect("modelo/listar");
-        }
+        $modelo = $this->validacao($id_modelo);
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $modelo = new StdClass();
 
+            $modelo->id_marca = $_POST['id_marca'];
             $modelo->nome = $_POST['nome'];
-            $modelo->id_modelo = $_POST['id_modelo'];
+            $modelo->id_modelo = $id_modelo;
 
-            $this->cor->alterar($modelo);
+            $this->modelo->alterar($modelo);
             
             $this->set_userdata('mensagem', 'Modelo alterado.');
         }
 
 
-        $modelo = $this->modelo->get($id_modelo);
 
         $view = array (
             'marcas' => $this->marca->listar(),
@@ -75,6 +74,20 @@ class modeloController extends Controller {
 
         $this->view->render('modelo/alterar', $view);
 
+    }
+
+    /**
+    *assegura que virá alguma coisa na query
+    * @return dados_modelos
+    */
+    protected function validacao($id_modelo)
+    {
+        $modelo = $this->modelo->get($id_modelo);
+
+        if(!($id_modelo > 0) || !$modelo)
+            $this->redirect('modelo/listar');
+
+        return $modelo;
     }
 
     

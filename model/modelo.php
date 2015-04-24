@@ -45,7 +45,7 @@ class Modelo extends Model{
 
     public function alterar($modelo)
     {
-        $sql = "UPDATE modelo SET nome = {$modelo->nome} WHERE id={$modelo->id_modelo}";
+        $sql = "UPDATE modelo SET nome = '{$modelo->nome}', id_marca = '{$modelo->id_marca}' WHERE id_modelo={$modelo->id_modelo}";
 
         $this->transacao($sql);
     }
