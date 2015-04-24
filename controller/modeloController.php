@@ -66,7 +66,9 @@ class modeloController extends Controller {
         $modelo = $this->modelo->get($id_modelo);
 
         $view = array (
-            'modelo' => $modelo
+            'marcas' => $this->marca->listar(),
+            'modelos' => $this->modelo->listar(),
+            'modeloAtual' => $modelo
         );
 
 
