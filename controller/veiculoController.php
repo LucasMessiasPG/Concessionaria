@@ -8,6 +8,10 @@ class veiculoController extends Controller {
     
     private $cor;
     
+    /**
+    * função para carregar os modelos disponiveis em todas as telas
+    */
+
     public function __construct()
     {
         parent::__construct();
@@ -17,6 +21,11 @@ class veiculoController extends Controller {
         $this->cor = $this->model('cor');
     }
     
+    /**
+    * função para mostrar opções disponiveis na tela
+    * @return View index
+    */
+
     public function indexAction(){
         $this->view->render("veiculo/index");
     }
@@ -48,6 +57,11 @@ class veiculoController extends Controller {
         
     }
     
+    /**
+    * função para listar veiculo
+    * @return View listar
+    */
+
     public function listarAction(){
         $view = array(
             'veiculos' => $this->veiculo->listar()
@@ -56,6 +70,11 @@ class veiculoController extends Controller {
         $this->view->render('veiculo/listar', $view);
     }
     
+    /**
+    * função para alterar veiculo
+    * @return View alterar
+    */
+
     public function alterarAction($id_veiculo = '')
     {
         $veiculo = $this->validacao($id_veiculo);
@@ -87,6 +106,11 @@ class veiculoController extends Controller {
         $this->view->render('veiculo/alterar', $view);
     }
     
+    /**
+    * função para excluir veiculo
+    * @return View excluir
+    */
+
     public function excluirAction($id_veiculo = '')
     {
         $veiculo = $this->validacao($id_veiculo);
@@ -102,6 +126,11 @@ class veiculoController extends Controller {
         }
     }
     
+    /**
+    * funcao para montar select de ano_fabricacao e ano_modelo
+    * @return array de Anos
+    */
+
     protected function anos()
     {
         $anos = array();
@@ -112,6 +141,11 @@ class veiculoController extends Controller {
 
         return $anos;
     }
+
+    /**
+    * assegura que virá alguma coisa na query
+    * @return dados_modelos
+    */
 
     protected function validacao($id_veiculo)
     {
