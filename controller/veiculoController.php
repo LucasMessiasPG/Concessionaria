@@ -58,6 +58,8 @@ class veiculoController extends Controller {
     
     public function alterarAction($id_veiculo = '')
     {
+        $veiculo = $this->validacao($id_veiculo);
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $veiculo = new StdClass();
 
@@ -74,11 +76,6 @@ class veiculoController extends Controller {
                 $this->set_userdata('error', 'Erro ao alterar Veículo.');
             }
         }
-
-        $veiculo = $this->veiculo->get($id_veiculo);
-
-        if(!($id_veiculo > 0) || !$veiculo)
-            $this->redirect('veiculo/listar');
 
         $view = array(
             'modelos' => $this->modelo->listar(),
@@ -112,6 +109,16 @@ class veiculoController extends Controller {
         }
 
         return $anos;
+    }
+
+    protected function validacao($id_veiculo)
+    {
+        $veiculo = $this->veiculo->get($id_veiculo);
+
+        if(!($id_veiculo > 0) || !$veiculo)
+            $this->redirect('veiculo/listar');
+
+        return $veiculo;
     }
 
 }

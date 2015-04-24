@@ -55,24 +55,42 @@ class corController extends Controller {
         $this->view->render('cor/cadastrar');
     }
     
-    public function alterarAction()
+    /**
+    * tela para alterar a cor
+    * @retun View alterar
+    */
+
+    public function alterarAction($id_cor = '')
     {
+        $cor = $this->validacao($id_cor);
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $cor = new StdClass();
 
             $cor->nome = $_POST['nome'];
             $cor->id_cor = $_POST['id_cor'];
 
-            $this->cor->alterar($cor);
-            
-            $this->set_userdata('mensagem', 'Cor alterado.');
+            if($this->cor->alterar($cor))
+                $this->set_userdata('mensagem', 'Cor alterado.');
+            else
+                $this->set_userdata('error', 'Erro ao alterar Cor.');
         }
+
+        $this->view->render('cor/alterar');
     }
     
-    public function excluirAction($id_cor)
+    public function excluirAction($id_cor = '')
     {
-        
+        $this->view->render('cor/alterar');
     }
 
-    
+    protected function validacao($id_cor)
+    {
+        $cor = $this->veiculo->get($id_cor);
+
+        if(!($id_cor > 0) || !$cor)
+            $this->redirect('veiculo/listar');
+
+        return $veiculo;
+    }
 }
