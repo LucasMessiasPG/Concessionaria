@@ -76,6 +76,20 @@ class modeloController extends Controller {
 
     }
 
+    public function excluirAction($id_modelo)
+    {
+        $modelo = $this->validacao($id_modelo);
+
+        if($mensagem = $this->modelo->excluir($id_modelo)){
+            $this->set_userdata('mensagem', $mensagem);
+
+            $view = array('voltar' => 'marca/listar');
+            $this->view->render('excluir', $view);
+        } else {
+            $this->redirect('modelo/listar');
+        }
+    }
+
     /**
     *assegura que virá alguma coisa na query
     * @return dados_modelos

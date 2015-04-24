@@ -49,4 +49,23 @@ class Modelo extends Model{
 
         $this->transacao($sql);
     }
+
+
+    public function excluir($id_modelo)
+    {
+        $modelo = $this->transacao("DELETE FROM modelo WHERE id_modelo=$id_modelo");
+
+
+        $mensagem = '';
+
+        if($modelo == 1)
+           $mensagem .= "$modelo veículo foi deletado.<br />";
+        elseif($modelo > 1)
+           $mensagem .= "$modelo veículos foram deletados.<br />";
+
+        if($mensagem != '')
+            return $mensagem;
+
+        //return false;
+    }
 }

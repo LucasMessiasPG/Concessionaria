@@ -73,7 +73,6 @@ class marcaController extends Controller {
             $view = array('voltar' => 'marca/listar');
             $this->view->render('excluir', $view);
         } else {
-        print_r($mensagem);
             //$this->redirect('marca/listar');
         }
     }

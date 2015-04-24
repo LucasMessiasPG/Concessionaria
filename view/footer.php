@@ -1,8 +1,10 @@
 </div>
 </body>
 <script>
-$(document).ready(function(){
-    confirm('teste');
-});
+    $(document).ready(function(){
+        $('.confirm').click(function(){
+            confirm('teste');
+        });
+    });
 </script>
 </html>

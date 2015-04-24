@@ -13,7 +13,7 @@ class Marca extends Model{
 
     public function get($id_marca)
     {
-        $sql = "SELECT nome FROM marca WHERE id_marca=$id_marca LIMIT 1";
+        $sql = "SELECT * FROM marca WHERE id_marca=$id_marca LIMIT 1";
 
         $this->transacao($sql);
 
