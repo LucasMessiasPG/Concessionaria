@@ -16,7 +16,7 @@
                 <a href="<?php echo URL ?>marca/alterar/<?php echo $marca->id_marca ?>">
                     <i class="glyphicon glyphicon-edit"></i> Alterar
                 </a>
-                <a href="<?php echo URL ?>marca/excluir/<?php echo $marca->id_marca ?>">
+                <a class="confirmar" href="<?php echo URL ?>marca/excluir/<?php echo $marca->id_marca ?>">
                     <i class="glyphicon glyphicon-remove-circle"></i> Excluir
                 </a>
             </td>

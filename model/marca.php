@@ -38,9 +38,6 @@ class Marca extends Model{
     {
         $this->transacao("SELECT * FROM modelo WHERE id_marca=$id_marca");
 
-        $array = (
-            "modelos" => $this->getRows()
-        );
 
         foreach ($array as $modelo) {
           $veiculo = $this->transacao("DELETE FROM veiculo WHERE id_modelo='{$modelo->id_modelo}'");
