@@ -39,7 +39,7 @@ class Cor extends Model {
     {
         $veiculos = $this->transacao("DELETE FROM veiculo WHERE id_cor=$id_cor");
 
-        $cor = $this->transacao("DELETE FROM veiculo WHERE id_cor=$id_cor");
+        $cor = $this->transacao("DELETE FROM cor WHERE id_cor=$id_cor");
 
         $mensagem = '';
 
