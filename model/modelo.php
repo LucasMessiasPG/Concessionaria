@@ -13,7 +13,7 @@ class Modelo extends Model{
 
     public function get($id_modelo)
     {
-        $sql = "SELECT nome FROM modelo WHERE id_modelo=$id_modelo LIMIT 1";
+        $sql = "SELECT * FROM modelo WHERE id_modelo=$id_modelo LIMIT 1";
 
         if($this->executar($sql)){
             return $this->getRow();

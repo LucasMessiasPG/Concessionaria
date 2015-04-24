@@ -48,6 +48,9 @@ class modeloController extends Controller {
 
     public function alterarAction($id_modelo)
     {
+        if ($id_modelo == '') {
+            $this->redirect("modelo/listar");
+        }
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $modelo = new StdClass();
 

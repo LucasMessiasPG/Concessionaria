@@ -5,6 +5,7 @@
     <table class="table">
         <thead>
             <th>ID</th>
+            <th>Marca</th>
             <th>Nome</th>
             <th width="150px">Ações</th>
         </thead>
@@ -12,6 +13,7 @@
             <?php foreach ($modelos as $modelo): ?>
             <tr>
                 <td><?php echo $modelo->id_modelo ?></td>
+                <td><?php echo ucwords($modelo->id_marca) ?></td>
                 <td><?php echo ucwords($modelo->nome) ?></td>
                 <td>
                 <a href="<?php echo URL ?>modelo/alterar/<?php echo $modelo->id_modelo ?>">
