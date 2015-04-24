@@ -19,8 +19,10 @@ abstract class Model {
 	{
 		$query = $this->driver->query($sql);
 
-        if(pg_num_rows($query) > 0)
-            return true;
+        $num_rows = pg_num_rows($query);
+
+        if($num_rows > 0)
+            return $num_rows;
 
         return false;
 	}
