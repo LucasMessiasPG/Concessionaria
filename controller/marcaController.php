@@ -45,7 +45,7 @@ class marcaController extends Controller {
             $marca = new StdClass();
 
             $marca->nome = $_POST['nome'];
-            $marca->id_marca = $_POST['id_marca'];
+            $marca->id_marca = $id_marca;
 
             $this->marca->alterar($marca);
 

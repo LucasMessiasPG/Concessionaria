@@ -29,7 +29,7 @@ class Marca extends Model{
 
     public function alterar($marca)
     {
-        $sql = "UPDATE marca SET nome = {$marca->nome} WHERE id={$marca->id_marca}";
+        $sql = "UPDATE marca SET nome = '{$marca->nome}' WHERE id_marca={$marca->id_marca}";
 
         $this->transacao($sql);
     }

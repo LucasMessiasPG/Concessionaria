@@ -57,7 +57,7 @@
     <br />
 
     <div class="text-center">
-        <input type="submit" class="btn btn-success" />
+        <input type="submit" class="btn btn-success" value="Cadastrar"/>
         <a href="<?php echo URL ?>veiculo" class="btn btn-default">Voltar</a>
 
         <div class="btn-group">

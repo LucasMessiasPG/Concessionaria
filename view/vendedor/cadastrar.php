@@ -26,7 +26,7 @@
         <input type="text" name="cpf" class="form-control" />
     </p>
     <p class="text-center">
-        <input type="submit" class="btn btn-success" />
+        <input type="submit" class="btn btn-success"/>
         <a href="<?php echo URL ?>cor" class="btn btn-default">Voltar</a>
     </p>
 </form>
