@@ -23,10 +23,10 @@
             <td><?php echo $vendedor->data_admissao ?></td>
             <td><?php echo $vendedor->cpf ?></td>
             <td>
-                <a href="<?php echo URL ?>funcionario/alterar/<?php echo $vendedor->id_vendedor ?>">
+                <a href="<?php echo URL ?>vendedor/alterar/<?php echo $vendedor->id_vendedor ?>">
                     <i class="glyphicon glyphicon-edit"></i> Alterar
                 </a>
-                <a class="confirmar" href="<?php echo URL ?>funcionario/excluir/<?php echo $vendedor->id_vendedor ?>">
+                <a class="confirmar" href="<?php echo URL ?>vendedor/excluir/<?php echo $vendedor->id_vendedor ?>">
                     <i class="glyphicon glyphicon-remove-circle confirm"></i> Excluir
                 </a>
             </td>
@@ -38,7 +38,7 @@
 <h3>Nenhum vendedor dadastrada</h3>
 <?php endif; ?>
 <div class="text-center">
-    <a href="<?php echo URL?>funcionario/cadastrar" class="btn btn-default">Cadastrar</a>
-    <a href="<?php echo URL?>funcionario" class="btn btn-default">Voltar</a>
+    <a href="<?php echo URL?>vendedor/cadastrar" class="btn btn-default">Cadastrar</a>
+    <a href="<?php echo URL?>vendedor" class="btn btn-default">Voltar</a>
 </div>
 <?php $this->render('footer') ?>
